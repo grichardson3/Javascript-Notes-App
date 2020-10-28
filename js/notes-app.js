@@ -1,45 +1,49 @@
-const notes = [
-    {
-      title: "cote 1",
-      content: "test content",
-    },
-    {
-      title: "aote 2",
-      content: "test yeet",
-    },
-    {
-      title: "bote 3",
-      content: "test content",
-    },
-  ];
+const titleElement = document.querySelector('#noteTitle');
+const bodyElement = document.querySelector('#noteBody');
+const removeButton = document.querySelector('#removeNote');
+const noteId = location.hash.substring(1);
+let notes = getSavedNotes();
 
-  const filters = {
-    searchText: '',
-  }
+const filters = {
+  searchText: '',
+}
 
-  const renderNotes = (notes, filters) => {
-    const filteredNotes = notes.filter((note) => {
-      return note.title.toLowerCase().includes(filters.searchText.toLowerCase());
-    });
-    if (!filteredNotes.length) {
-      document.querySelector('#notes').innerHTML = '<p><i style="color: #666;">no results found...</i></p>';
-    } else {
-      document.querySelector('#notes').innerHTML = '';
-    }
-    filteredNotes.forEach((note) => {
-      const noteElement = document.createElement('p');
-      noteElement.textContent = note.title;
-      document.querySelector('#notes').appendChild(noteElement);
+renderNotes(notes, filters);
+
+document.querySelector('#nameForm').addEventListener('submit', (e) => {
+  const noteID = uuidv4();
+  e.preventDefault();
+  if (!e.target.elements.notesInput.value == "") {
+    notes.push({
+      id: noteID,
+      title: e.target.elements.notesInput.value,
+      body: ''
     });
   }
+  saveNotes(notes);
+    // renderNotes(notes, filters);
+  e.target.elements.notesInput.value = "";
+  location.assign(`/edit.html#${noteID}`);
+});
 
+document.querySelector('#searchText').addEventListener('input', (e) => {
+  filters.searchText = e.target.value;
   renderNotes(notes, filters);
+});
 
-  document.querySelector('#searchText').addEventListener('input', (e) => {
-    filters.searchText = e.target.value;
+document.querySelector('#filterBy').addEventListener('change', (e) => {
+  console.log(e.target.value);
+});
+
+window.addEventListener('storage', (e) => {
+  if (e.key === 'notes') {
+    notes = JSON.parse(e.newValue);
     renderNotes(notes, filters);
-  });
+  }
+});
 
-  document.querySelector('#filterBy').addEventListener('change', (e) => {
-    console.log(e.target.value);
-  });
+/*const now = new Date();
+console.log(now.toString());
+console.log(`Year: ${now.getFullYear()}`);
+console.log(`Month: ${now.getMonth() + 1}`);
+console.log(`Day: ${now.getDate()}`);*/
