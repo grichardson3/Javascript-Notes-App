@@ -14,13 +14,17 @@ if (note == undefined) {
 titleElement.value = note.title;
 bodyElement.value = note.body;
 
+console.log(titleElement);
+
 titleElement.addEventListener('input', (e) => {
     note.title = e.target.value;
+    note.dateModified = moment().valueOf();
     saveNotes(notes);
 });
 
 bodyElement.addEventListener('input', (e) => {
     note.body = e.target.value;
+    note.dateModified = moment().valueOf();
     saveNotes(notes);
 });
 

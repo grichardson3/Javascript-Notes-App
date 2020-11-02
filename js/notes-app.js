@@ -4,26 +4,33 @@ const removeButton = document.querySelector('#removeNote');
 const noteId = location.hash.substring(1);
 let notes = getSavedNotes();
 
+console.log(moment().toString());
+
 const filters = {
+  // default values
   searchText: '',
+  sortBy: 'byEdited',
 }
 
 renderNotes(notes, filters);
 
 document.querySelector('#nameForm').addEventListener('submit', (e) => {
   const noteID = uuidv4();
+  const timestamp = moment().valueOf();
   e.preventDefault();
   if (!e.target.elements.notesInput.value == "") {
     notes.push({
       id: noteID,
       title: e.target.elements.notesInput.value,
+      createdAt: timestamp,
+      dateModified: timestamp,
       body: ''
     });
+    saveNotes(notes);
+    renderNotes(notes, filters);
+    e.target.elements.notesInput.value = "";
+    // location.assign(`/edit.html#${noteID}`);
   }
-  saveNotes(notes);
-    // renderNotes(notes, filters);
-  e.target.elements.notesInput.value = "";
-  location.assign(`/edit.html#${noteID}`);
 });
 
 document.querySelector('#searchText').addEventListener('input', (e) => {
@@ -32,7 +39,8 @@ document.querySelector('#searchText').addEventListener('input', (e) => {
 });
 
 document.querySelector('#filterBy').addEventListener('change', (e) => {
-  console.log(e.target.value);
+  filters.sortBy = e.target.value
+  renderNotes(notes, filters);
 });
 
 window.addEventListener('storage', (e) => {
@@ -41,9 +49,3 @@ window.addEventListener('storage', (e) => {
     renderNotes(notes, filters);
   }
 });
-
-/*const now = new Date();
-console.log(now.toString());
-console.log(`Year: ${now.getFullYear()}`);
-console.log(`Month: ${now.getMonth() + 1}`);
-console.log(`Day: ${now.getDate()}`);*/
