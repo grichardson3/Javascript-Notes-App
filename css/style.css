@@ -1,0 +1,242 @@
+body {
+    background: #eee;
+}
+
+h1, h2, h3, h4, h5, h6, span, button, li, input, label, select, option, small, a, i {
+    font-family: 'Indie Flower', cursive;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 3.25em;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+#container {
+    padding: 20px;
+    font-size: 16px;
+    background: white;
+    background-image: 
+      -webkit-linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em),
+      -webkit-linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+    background-image: 
+      -moz-linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em),
+      -moz-linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+    background-image: 
+      -o-linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em), 
+      -o-linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+    background-image: 
+      -ms-linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em), 
+      -ms-linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+    -webkit-background-size: 100% 2em;
+    -moz-background-size: 100% 2em;
+  
+    background-image: 
+      linear-gradient(0deg, transparent 5em, rgba(255,0,0,.2) 0, transparent 5.1em), 
+      linear-gradient(rgba(0,0,255,.3) 1px, transparent 0);
+    background-size: 100% 2em;
+}
+
+#container h2 {
+    margin-top: 20px;
+}
+
+#editNoteElement {
+    display: flex;
+    align-items: inherit;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+#editNoteContent {
+    margin-top: -7px;
+}
+
+#editNoteField {
+    display: block;
+}
+
+#nameForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 31px;
+}
+
+#nameForm label, #nameForm input {
+    margin-right: 12px;
+}
+
+#notes {
+    margin-top: 32px;
+}
+
+.noteElement {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1px;
+}
+
+.noteElement small {
+    margin-right: 12px;
+}
+
+.noteElement button {
+    margin-left: 8px;
+}
+
+.noteDetailsAndButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sortNotes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#sortNotes label {
+    margin-right: 12px;
+}
+
+#searchText, #filterBy, #noteInput {
+    height: 33px;
+    width: 400px;
+    margin-right: 12px;
+    padding-left: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#noteTitle {
+    height: 33px;
+    width: 380px;
+    margin: 0px 12px 12px 0;
+    padding-left: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#noteBody {
+    width: 450px;
+    margin: 0px 12px 12px 0;
+    padding-left: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Adding lots of media queries so that all the elements line up with the background lines in the container */
+
+@media only screen and (max-width: 1162px) {
+    #editNoteElement {
+        margin-top: 19px;
+    }
+    #sortNotes {
+        margin-top: 21px;
+    }
+}
+
+@media only screen and (max-width: 1070px) {
+    #editNoteElement {
+        margin-top: 20px;
+    }
+    #sortNotes {
+        margin-top: 22px;
+    }
+}
+
+@media only screen and (max-width: 976px) {
+    #editNoteElement {
+        margin-top: 21px;
+    }
+    #sortNotes {
+        margin-top: 23px;
+    }
+}
+
+@media only screen and (max-width: 884px) {
+    #editNoteElement {
+        margin-top: 22px;
+    }
+    #sortNotes {
+        margin-top: 24px;
+    }
+}
+
+@media only screen and (max-width: 792px) {
+    #editNoteElement {
+        margin-top: 23px;
+    }
+    #sortNotes {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #nameForm input {
+        width: 300px;
+    }
+
+    #notes {
+        margin-top: 38px;
+    }
+
+    .noteElement {
+        display: block;
+        margin-bottom: 7px;
+    }
+}
+
+@media only screen and (max-width: 699px) {
+    #editNoteElement {
+        margin-top: 24px;
+    }
+    #sortNotes {
+        margin-top: 26px;
+    }
+}
+
+@media only screen and (max-width: 607px) {
+    #editNoteElement {
+        margin-top: 25px;
+    }
+    #sortNotes {
+        margin-top: 27px;
+    }
+}
+
+@media only screen and (max-width: 551px) {
+    #nameForm input {
+        width: 230px;
+    }
+}
+
+@media only screen and (max-width: 515px) {
+    #editNoteElement {
+        margin-top: 26px;
+    }
+    #sortNotes {
+        margin-top: 28px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    
+    .noteElement button {
+        margin-left: 2px;
+    }
+}
+
+@media only screen and (max-width: 519px) {
+    #editNoteElement {
+        margin-top: 31px;
+    }
+}

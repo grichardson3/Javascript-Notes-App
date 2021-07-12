@@ -4,12 +4,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Note</title>
+        <link rel="icon" href="img/icon-2.png" type="image/png" sizes="48x48">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css"/>
     </head>
     <body>
-        <input id="noteTitle" type="text" value="" name="noteTitle"><br>
-        <textarea id="noteBody" type="text" value="" name="noteBody"></textarea><br>
-        <a href="/index.html">Submit</a><br>
-        <button id="removeNote">Remove Note</button>
+        <div id="container" class="container">
+            <h2>Edit Note</h2>
+            <div id="editNoteElement">
+                <div id="editNoteField">
+                    <div id="editNoteTitle">
+                        <label>Note Title: </label>
+                        <input id="noteTitle" type="text" value="" name="noteTitle">
+                    </div>
+                    <div id="editNoteContent">
+                        <div><label>Note Content: </label></div>
+                        <textarea id="noteBody" rows="10" type="text" value="" name="noteBody"></textarea>
+                    </div>
+                    <div>
+                        <a class="btn btn-sm btn-primary" href="/index.html">Submit</a>
+                        <button class="btn btn-sm btn-danger" id="removeNote">Remove Note</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
         <script src="js/notes-functions.js"></script>
         <script src="js/notes-edit.js"></script>

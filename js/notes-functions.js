@@ -32,35 +32,46 @@ const removeNote = (id) => {
 
 const generateNoteDOM = (note) => {
   const noteElement = document.createElement('div');
-  const pb = document.createElement('br');
+  const noteDetailsButtonElement = document.createElement('div');
+  const noteDetailsElement = document.createElement('div');
+  const noteEditDeleteButtons = document.createElement('div');
   const textElement = document.createElement('a');
   const dateCreatedTextElement = document.createElement('small');
   const dateModifiedTextElement = document.createElement('small');
+  const editButton = document.createElement('a');
   const deleteButton = document.createElement('button');
 
+  if (note.title.length > 0) {
+    textElement.textContent = note.title;
+    dateCreatedTextElement.textContent = `Created At: ${moment(note.createdAt).format("MMMM Do, YYYY")}`;
+    dateModifiedTextElement.textContent = `Date Modified: ${moment(note.dateModified).format("MMMM Do, YYYY")}`;
+  } else {
+    textElement.textContent = "Unnamed note";
+  }
+
+  noteElement.setAttribute('class', 'noteElement');
+  noteElement.appendChild(textElement);
+  noteElement.appendChild(noteDetailsButtonElement);
+  noteDetailsButtonElement.setAttribute('class', 'noteDetailsAndButton');
+  noteDetailsButtonElement.appendChild(noteDetailsElement);
+  noteDetailsButtonElement.appendChild(noteEditDeleteButtons);
+  noteDetailsElement.appendChild(dateCreatedTextElement);
+  dateCreatedTextElement.setAttribute('class', 'dateCreated');
+  noteDetailsElement.appendChild(dateModifiedTextElement);
+  dateModifiedTextElement.setAttribute('class', 'dateModified');
+  editButton.setAttribute('class', 'btn btn-sm btn-primary');
+  editButton.setAttribute('href', `/edit.html#${note.id}`);
+  editButton.textContent = "Edit";
+  deleteButton.setAttribute("class", "btn btn-sm btn-danger");
   deleteButton.textContent = "Delete";
-  noteElement.appendChild(deleteButton);
+  noteEditDeleteButtons.appendChild(editButton);
+  noteEditDeleteButtons.appendChild(deleteButton);
 
   deleteButton.addEventListener('click', () => {
     removeNote(note.id);
     saveNotes(notes);
     renderNotes(notes, filters);
   });
-
-  if (note.title.length > 0) {
-    textElement.textContent = note.title;
-    dateCreatedTextElement.textContent = `Created At: ${moment(note.createdAt).format("MMMM Do, YYYY H:mm:ss a")}`;
-    dateModifiedTextElement.textContent = `Date Modified: ${moment(note.dateModified).format("MMMM Do, YYYY H:mm:ss a")}`;
-  } else {
-    textElement.textContent = "Unnamed note";
-  }
-
-  textElement.setAttribute('href', `/edit.html#${note.id}`);
-  noteElement.appendChild(textElement);
-  noteElement.appendChild(pb);
-  noteElement.appendChild(dateCreatedTextElement);
-  noteElement.appendChild(pb);
-  noteElement.appendChild(dateModifiedTextElement);
 
   return noteElement;
 }

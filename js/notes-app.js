@@ -1,10 +1,20 @@
+const container = document.querySelector("#container");
 const titleElement = document.querySelector('#noteTitle');
 const bodyElement = document.querySelector('#noteBody');
 const removeButton = document.querySelector('#removeNote');
 const noteId = location.hash.substring(1);
 let notes = getSavedNotes();
 
-console.log(moment().toString());
+document.body.style.height = window.innerHeight + "px";
+container.style.height = window.clientHeight + "px";
+
+window.addEventListener("resize", function(){
+  document.body.style.height = window.innerHeight + "px";
+});
+
+window.addEventListener("resize", function(){
+  container.style.height = window.clientHeight + "px";
+});
 
 const filters = {
   // default values
